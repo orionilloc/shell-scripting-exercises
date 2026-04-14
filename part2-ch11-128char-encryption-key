@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Write a shell script to create a 128-character encryption key. 
+# Use the highest level of randomness for this script.
+
+generate_128_char_key() {
+    local encryption_key
+
+    encryption_key=$(head -c 500 /dev/random | tr -dc 'A-Za-z0-9' | head -c 128)
+
+    if [[ -z "$encryption_key" ]]; then
+        echo "Error: Failed to generate 128 character encryption key."
+        return 1
+    fi
+
+    echo "$encryption_key"
+}
+
+echo "128 character encryption key generated below:"
+echo ""
+generate_128_char_key
