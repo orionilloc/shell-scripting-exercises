@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+RANDOM_shell_generation() {
+RANDOM_counter=1
+until [[ $RANDOM_counter -gt 1000 ]]
+do
+  echo $RANDOM
+  ((RANDOM_counter++))
+done
+
+}
+
+dev_urandom_generation() {
+dev_urandom_counter=1
+until [[ $dev_urandom_counter -gt 1000 ]]
+do
+head -c 2 /dev/urandom | od -An -tu2
+  ((dev_urandom_counter++))
+done
+
+}
+
+dev_random_generation() {
+dev_random_counter=1
+until [[ $dev_random_counter -gt 1000 ]]
+do
+head -c 2 /dev/random | od -An -tu2
+  ((dev_random_counter++))
+done
+
+}
+
+
+time RANDOM_shell_generation > /dev/null
+
+time dev_urandom_generation > /dev/null
+
+time dev_random_generation > /dev/null
