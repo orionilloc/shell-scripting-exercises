@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Write a shell script that contains three functions. 
+# Function 1 will create 1,000 random numbers using the RANDOM shell variable. 
+# Function 2 will create 1,000 random numbers using the /dev/urandom character special file. 
+# Function 3 will create 1,000 random numbers using the /dev/random character special file. 
+# In the shell script, use the shell time utility to record the execution times of each method. Explain any differences you observe.
+
 RANDOM_shell_generation() {
 RANDOM_counter=1
 until [[ $RANDOM_counter -gt 1000 ]]
