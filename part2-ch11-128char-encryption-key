@@ -6,10 +6,10 @@
 generate_128_char_key() {
     local encryption_key
 
-    encryption_key=$(head -c 500 /dev/random | tr -dc 'A-Za-z0-9' | head -c 128)
+    encryption_key=$(head -c 1024 /dev/random | tr -dc 'A-Za-z0-9!@#$%^&*()_+' | head -c 128)
 
-    if [[ -z "$encryption_key" ]]; then
-        echo "Error: Failed to generate 128 character encryption key."
+    if [[ ${#encryption_key} -lt 128 ]]; then
+        echo "Error: Failed to generate full 128-character key." >&2
         return 1
     fi
 
