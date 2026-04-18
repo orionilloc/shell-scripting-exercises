@@ -1,36 +1,29 @@
-#!/bin/bash
-#
-# Rewrite the random_file.Bash shell script in Listing 11-16 but this time use the
-# /dev/urandom character special file to create all the random numbers. Is there a
-# difference in execution time? Explain any differences observed.
-#
-# Initial notes by learner: no need for load_default_keyboard function or character arrays
+#!/usr/bin/env bash
 #
 # SCRIPT: random_file.bash
-# AUTHOR: Randy Michael
-# DATE: 8/3/2007
-# REV: 1.0
+# AUTHOR: Randy Michael / Refactor by Collin Sterne
+# DATE:   2026-04-18
+# REV:    1.0
+#
 # PLATFORM: Not Platform Dependent
 #
-# PURPOSE: This script is used to create a specific size file of random 
-# characters. The methods used in this script include loading an array 
-# with alphanumeric characters, then using the /dev/random character 
-# special file to seed the RANDOM shell variable, which in turn is 
-# used to extract a random set of characters from the KEYS array to 
-# build the OUTFILE of a specified MB size.
+# PURPOSE: This script creates a specific size file of random characters.
+#          It uses /dev/urandom directly to build the OUTFILE of a 
+#          specified MB size, bypassing traditional shell loops.
 #
-##########################################
+##########################################################
 # DEFINE FILES AND VARIABLES HERE
-##########################################
+##########################################################
+
 typeset -i MB_SIZE=$1
 WORKDIR=/scripts
 OUTFILE=${WORKDIR}/largefile.random.txt
 >$OUTFILE
 THIS_SCRIPT=$(basename $0)
 
-##########################################
+##########################################################
 # DEFINE FUNCTIONS HERE
-##########################################
+##########################################################
 
 elapsed_time ()
 {
@@ -46,9 +39,9 @@ usage ()
     echo -e "Where Mb_size is the size of the file to build\n"
 }
 
-##########################################
+##########################################################
 # BEGINNING OF MAIN
-##########################################
+##########################################################
 
 if (( $# != 1 ))
 then
@@ -94,6 +87,5 @@ echo -e "File size:\n"
 ls -l $OUTFILE
 echo
 
-##########################################
-# END OF random_file.bash SCRIPT
-##########################################
+##########################################################
+# End of script
