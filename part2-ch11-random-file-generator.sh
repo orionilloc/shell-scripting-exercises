@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# SCRIPT: random_file.bash
+# SCRIPT: part2-ch11-random-file-generator.sh
 # AUTHOR: Randy Michael / Refactor by Collin Sterne
 # DATE:   2026-04-18
 # REV:    1.0
